@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+
+{% block title %}
+Log In or Register
+{% endblock title%}
+
+{%block content%}
+    <style>
+.must-authenticate-container {
+  height: 200px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+    </style>
+
+
+    <div class="must-authenticate-container">
+        <div class="center">
+            <p class="m-auto">You must authenticate to view this page.</p>
+            <p class="m-auto text-center">
+                <a href="{%url 'account:login'%}">Login </a> or
+                <a href="{%url 'account:register'%}"> Register </a>
+            </p>
+        </div>
+    </div>
+
+{%endblock content%}

@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{% load tz %}
+
+{% block title %}
+{{ blog_post.title }}
+{% endblock title%}
+
+{%block content%}
+<style type="text/css">
+    .btn-del{
+        background-color: #a41515;
+        text-decoration-color: white;
+    }
+
+
+    .card{
+        max-width: 700px;
+    }
+
+    .container{
+        padding: 20px;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+
+        <!--Blog post-->
+        <div class="card m-auto">
+            <img class="card-img-top" src="{{blog_post.image.url}}" alt="Image is not available at this moment">
+
+            <div class="card-body my-2">
+                <h2 class="card-title">{{blog_post.title}}</h2>
+                <div class="card-footer text-muted text-right">
+                    -By {{blog_post.author}} on{%timezone "Asia/Calcutta"%} {{blog_post.datetime_published}}{% endtimezone %}
+                </div>
+                <p class="card-text">{{blog_post.body|linebreaksbr}}</p>
+
+                {%if blog_post.author == request.user%}
+                    <a href="{%url 'blog:edit' blog_post.slug%}" class="btn btn-primary">Edit</a>
+                    <a id="del" href="{%url 'blog:delete' blog_post.slug%}" class="btn btn-del">Delete</a>
+
+                {%endif%}
+            </div>
+
+        </div>
+        <!--Blog post-->
+
+    </div>
+</div>
+
+
+{%endblock content%}
+
+
