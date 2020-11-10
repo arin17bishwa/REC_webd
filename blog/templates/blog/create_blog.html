@@ -12,6 +12,8 @@ Create Post
         max-width: 100%;
         padding: 15px;
         margin: auto;
+        margin-top: 70px;
+
     }
 
     .submit-button{
@@ -47,6 +49,21 @@ Create Post
 
                 <!-- Submit btn -->
                 <button class="submit-button btn btn-lg btn-primary btn-block" type="submit">POST</button>
+                <p>{%for field in form%}
+
+                        {%for error in field.errors%}
+                            <p style="color: red;">{{error}}</p>
+                        {%endfor%}
+
+                    </p>
+                    {%endfor%}
+
+                    {%if form.non_field_errors%}
+                        <div style="color: red;">
+                            <p>{{form.non_field_errors}}</p>
+                        </div>
+                    {%endif%}
+
             </form>
         </div>
     </div>
