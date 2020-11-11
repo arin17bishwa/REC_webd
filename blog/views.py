@@ -13,7 +13,9 @@ from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
 BLOG_POSTS_PER_PAGE = settings.BLOG_POSTS_PER_PAGE
 
 Account = User
-#qwert@123
+
+
+# qwert@123
 
 @login_required(login_url='/account/must-authenticate')
 def create_blog_view(request):
@@ -112,7 +114,7 @@ def home_screen_view(request):
 
     blog_posts = BlogPost.objects.all().order_by('-datetime_updated')
 
-    # Pagination
+    # region Pagination
     page = request.GET.get('page', 1)
     blog_posts_paginator = Paginator(blog_posts, BLOG_POSTS_PER_PAGE)
 
@@ -122,6 +124,8 @@ def home_screen_view(request):
         blog_posts = blog_posts_paginator.page(BLOG_POSTS_PER_PAGE)
     except EmptyPage:
         blog_posts = blog_posts_paginator.page(blog_posts_paginator.num_pages)
+
+    # endregion
 
     context['blog_posts'] = blog_posts
     return render(request, 'blog/home.html', context)
