@@ -131,24 +131,25 @@
 
 .navbar input[type=date] {
   padding: 6px;
-  margin-top: 8px;
+  margin-top: 6px;
   font-size: 17px;
   border: none;
 }
 
 .navbar .search-container button {
-  float: right;
-  padding: 6px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
+    float: right;
+    padding: 6px;
+    margin-top: 30px;
+    margin-left: 4px;
+    margin-right: 16px;
+    background: #ab1010;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
 }
 
 .navbar .search-container button:hover {
-  background: #ccc;
+  background: #194cb2;
 }
 
 @media screen and (max-width: 600px) {
@@ -186,7 +187,7 @@
     <div class="navbar-links">
     {% if request.user.is_authenticated %}
     <div class="search-container">
-    <form action="/">
+    <form action="/" method="get">
         <div style="float: left">
             <label for="id_start" style="float:left">Start</label>
             <input class="form-control" type="date" name="start" id="id_start" placeholder="Start Date" required
