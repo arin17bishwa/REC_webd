@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseForbidden, HttpResponseNotFound, Http404
+from django.http import HttpResponseForbidden, HttpResponseNotFound, Http404, JsonResponse
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.conf import settings
@@ -9,6 +9,7 @@ from blog.forms import (CreateBlogPostForm,
                         )
 from django.contrib.auth.models import User
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
+from rest_framework.decorators import api_view
 
 BLOG_POSTS_PER_PAGE = settings.BLOG_POSTS_PER_PAGE
 LOGIN_URL = settings.LOGIN_URL
@@ -130,3 +131,17 @@ def home_screen_view(request):
 
     context['blog_posts'] = blog_posts
     return render(request, 'blog/home.html', context)
+
+
+@api_view(['POST', ])
+@login_required
+def action_view(request):
+    data = request.data
+    user = get_object_or_404(User, id=data.get('userId'))
+    post = get_object_or_404(BlogPost, id=data.get('postId'))
+    action = data.get('action')
+    if action:
+        post.liked_by.add(user)
+    else:
+        post.liked_by.remove(user)
+    return JsonResponse(data={'message': 'success'}, status=200)
