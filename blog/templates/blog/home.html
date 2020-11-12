@@ -51,15 +51,6 @@ Home
         <!-- blog feed -->
         <div class="left-column col-lg-7 offset-lg-1">
 
-            <!-- Top 'create post' bar -->
-            <div class="d-lg-none mb-3">
-                <div class="card  d-flex flex-column p-3 create-post-bar">
-                    <img class="img-fluid d-block m-auto pb-2" src="{% static 'post.jpg' %}" width="72" height="72">
-                    <p class="lead text-center">RECursion Auditions</p>
-                    <p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>
-                </div>
-            </div>
-            <!-- end Top 'create post' bar -->
 
             <!-- Blog posts-->
             {%if blog_posts%}
