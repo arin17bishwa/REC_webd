@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
 # Create your views here.
-#qwert@123
+# qwert@123
 def registration_view(request):
     context = {}
     if request.method == 'POST':
