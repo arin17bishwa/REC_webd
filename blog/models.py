@@ -3,7 +3,6 @@ from django.db.models.signals import pre_save, post_delete
 from django.utils.text import slugify
 from django.conf import settings
 from django.dispatch import receiver
-from django.core.validators import MinLengthValidator
 from upload_validator import FileTypeValidator
 import datetime
 
