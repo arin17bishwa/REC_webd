@@ -10,6 +10,8 @@ from blog.forms import (CreateBlogPostForm,
 from django.contrib.auth.models import User
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
 from rest_framework.decorators import api_view
+from django.utils.timezone import make_aware
+from datetime import datetime
 
 BLOG_POSTS_PER_PAGE = settings.BLOG_POSTS_PER_PAGE
 LOGIN_URL = settings.LOGIN_URL
@@ -113,8 +115,17 @@ def delete_blog_view(request, slug):
 @login_required
 def home_screen_view(request):
     context = {}
+    blog_posts = BlogPost.objects.all()
+    data = request.GET
+    start = data.get('start', False)
+    end = data.get('end', False)
 
-    blog_posts = BlogPost.objects.all().order_by('-datetime_updated')
+    if start and end:
+        start_date = make_aware(datetime.strptime(start, '%Y-%m-%d'))
+        end_date = make_aware(datetime.strptime(end, '%Y-%m-%d'))
+        blog_posts = blog_posts.filter(datetime_published__gte=start_date).filter(datetime_published__lte=end_date)
+
+    blog_posts = blog_posts.order_by('-datetime_updated')
 
     # region Pagination
     page = request.GET.get('page', 1)
