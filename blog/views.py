@@ -11,13 +11,14 @@ from django.contrib.auth.models import User
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
 
 BLOG_POSTS_PER_PAGE = settings.BLOG_POSTS_PER_PAGE
+LOGIN_URL = settings.LOGIN_URL
 
 Account = User
 
 
 # qwert@123
 
-@login_required(login_url='/account/must-authenticate')
+@login_required
 def create_blog_view(request):
     context = {}
 
@@ -37,7 +38,7 @@ def create_blog_view(request):
     return render(request, 'blog/create_blog.html', context)
 
 
-@login_required(login_url='/account/must-authenticate')
+@login_required
 def detail_blog_view(request, slug):
     context = {}
 
@@ -51,7 +52,7 @@ def detail_blog_view(request, slug):
     return render(request, 'blog/detail_blog.html', context)
 
 
-@login_required(login_url='/account/must-authenticate')
+@login_required
 def edit_blog_view(request, slug):
     context = {}
 
@@ -87,7 +88,7 @@ def edit_blog_view(request, slug):
     return render(request, 'blog/edit_blog.html', context)
 
 
-@login_required(login_url='/account/must-authenticate')
+@login_required
 def delete_blog_view(request, slug):
     context = {}
     user = request.user
@@ -108,7 +109,7 @@ def delete_blog_view(request, slug):
     return render(request, 'blog/confirm_del.html', context)
 
 
-@login_required(login_url='/account/must-authenticate')
+@login_required
 def home_screen_view(request):
     context = {}
 

@@ -128,5 +128,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 BLOG_POSTS_PER_PAGE=2
+LOGIN_URL='/account/login/'
+
 
 """#'3ca*u-f6wiis7dyt%mfzl-59fe^xcqt^pu_jc&gxqxp0$6f(*a'"""
