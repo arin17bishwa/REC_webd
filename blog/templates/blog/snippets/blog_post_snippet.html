@@ -48,6 +48,15 @@
 }
 
 
+
+.fa-thumbs-up{
+    color:blue;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 1.5em;
+}
+
+
+
 </style>
 
 {%if blog_post%}
@@ -64,8 +73,10 @@
                 </div>
                 <p class="card-text">{{blog_post.body|truncatechars:15|linebreaksbr}}
                     <a href="{% url 'blog:detail' post.slug%}">(Read more)</a>
-
                 </p>
+            <hr>
+            <i onclick="myFunction(this)" class="fa fa-thumbs-up">  Henlo</i>
+
             </div>
         </div>
     </div>
@@ -84,3 +95,12 @@
     </div>
 </div>
 {%endif%}
+
+
+<script type="text/javascript">
+    function myFunction(x) {
+      x.classList.toggle("fa-thumbs-down");
+    }
+
+
+</script>
