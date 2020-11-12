@@ -49,3 +49,40 @@ if settings.DEBUG:
 </div>
 
 '''
+
+
+'''
+<nav class="topnav fixed-top navbar" id="myTopnav">
+
+
+    <h5 class="my-0 mr-md-auto font-weight-normal text-center">
+    {%if request.user.is_authenticated%}
+    Hello, {{request.user.username|capfirst}}
+    {%endif%}
+    </h5>
+
+
+    {%if request.user.is_authenticated%}
+        <p>
+            <a class="p-2 text-dark" href="{%url 'home'%}">HOME </a>
+            <a class="p-2 text-dark" href="{%url 'account:logout'%}">Logout </a>
+        </p>
+    {%else%}
+        <p>
+            <a class="p-2 text-dark" href="{%url 'home'%}">HOME </a>
+            <a class="p-2 text-dark" href="{%url 'account:login'%}">Login </a>
+            <a class="p-2 text-dark" href="{%url 'account:register'%}"> Register</a>
+        </p>
+    {%endif%}
+    <p>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </p>
+
+
+
+
+</nav>
+
+'''
