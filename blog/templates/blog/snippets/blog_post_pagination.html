@@ -4,7 +4,8 @@
 <ul class="pagination pg-grey justify-content-center">
     {% if blog_posts.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&laquo; Previous</a>
+          <a class="page-link"
+             href="?{% if request.GET.start %}start={{request.GET.start}}&{% endif %}{% if request.GET.end %}end={{ request.GET.end }}&{% endif %}page={{ blog_posts.previous_page_number }}">&laquo; Previous</a>
         </li>
     {% endif %}
 
@@ -12,16 +13,21 @@
         {% if blog_posts.number == i %}
             <li class="page-item active"><a class="page-link">{{ i }}</a></li>
         {% else %}
-            <li class="page-item" ><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
+            <li class="page-item" >
+                <a class="page-link"
+                   href="?{% if request.GET.start %}start={{request.GET.start}}&{% endif %}{% if request.GET.end %}end={{ request.GET.end }}&{% endif %}page={{ i }}">{{ i }}</a>
+            </li>
         {% endif %}
     {% endfor %}
 
     {% if blog_posts.has_next %}
         <li class="page-item">
-          <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">Next</a>
+          <a class="page-link"
+             href="?{% if request.GET.start %}start={{request.GET.start}}&{% endif %}{% if request.GET.end %}end={{ request.GET.end }}&{% endif %}page={{ blog_posts.next_page_number }}">Next</a>
         </li>
         <li class="page-item">
-          <a class="page-link"  href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">Last &raquo;</a>
+          <a class="page-link"
+             href="?{% if request.GET.start %}start={{request.GET.start}}&{% endif %}{% if request.GET.end %}end={{ request.GET.end }}&{% endif %}page={{ blog_posts.paginator.num_pages }}">Last &raquo;</a>
         </li>
     {% endif %}
 </ul>
