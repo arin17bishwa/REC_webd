@@ -189,11 +189,19 @@
     <form action="/">
         <div style="float: left">
             <label for="id_start" style="float:left">Start</label>
-            <input class="form-control" type="date" name="start" id="id_start" placeholder="Start Date" required />
+            <input class="form-control" type="date" name="start" id="id_start" placeholder="Start Date" required
+            {% if request.GET.start %}
+                value="{{ request.GET.start }}"
+            {% endif %}
+            />
         </div>
         <div style="float: left">
             <label for="id_end" style="float:left">End</label>
-            <input  class="form-control" type="date" name="end" id="id_end" placeholder="End Date" required />
+            <input  class="form-control" type="date" name="end" id="id_end" placeholder="End Date" required
+            {% if request.GET.end %}
+                value="{{ request.GET.end }}"
+            {% endif %}
+            />
         </div>
       <button type="submit" >Filter</button>
     </form>
