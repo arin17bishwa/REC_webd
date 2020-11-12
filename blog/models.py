@@ -29,7 +29,7 @@ class BlogPost(models.Model):
     datetime_published = models.DateTimeField(auto_now_add=True, verbose_name='datetime published')
     datetime_updated = models.DateTimeField(auto_now=True, verbose_name='datetime updated')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    liked_by= models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,related_name='liked_by')
+    liked_by = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,related_name='liked_by')
     slug = models.SlugField(blank=True, unique=True)
 
     def __str__(self):
