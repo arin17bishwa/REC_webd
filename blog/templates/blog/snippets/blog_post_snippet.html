@@ -73,7 +73,7 @@
                 <p class="card-text">{{blog_post.body|truncatechars:15|linebreaksbr}}
                     <a href="{% url 'blog:detail' post.slug%}">(Read more)</a>
                 </p>
-
+                <hr>
                 <div id="like-count-{{ blog_post.id }}" class="like-count" style="display:inline; float:left">
                    {{ blog_post.like_count }} Likes
                 </div>
