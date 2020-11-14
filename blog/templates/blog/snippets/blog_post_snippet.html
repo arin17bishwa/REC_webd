@@ -47,25 +47,6 @@
   cursor: pointer;
 }
 
-
-
-.fa-thumbs-up{
-    color:blue;
-    text-shadow: 1px 1px 1px #ccc;
-    font-size: 1.5em;
-}
-
-.fa-thumbs-down{
-    color:red;
-    text-shadow: 1px 1px 1px #ccc;
-    font-size: 1.5em;
-}
-
-.like-count{
-    color: blue;
-    font-size: 1.5em
-}
-
 </style>
 
 {%if blog_post%}
@@ -83,20 +64,6 @@
                 <p class="card-text">{{blog_post.body|truncatechars:15|linebreaksbr}}
                     <a href="{% url 'blog:detail' post.slug%}">(Read more)</a>
                 </p>
-            <hr>
-
-            <div id="{{ blog_post.id }}">
-                {% if not request.user in blog_post.liked_by.all %}
-                    <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},1)" class="fa fa-thumbs-up">Like</i>
-                {% else %}
-                    <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},0)" class="fa fa-thumbs-down">Unlike</i>
-                {% endif %}
-            </div>
-
-            <div id="count-{{ blog_post.id }}" class="like-count" >
-               {{ blog_post.liked_by.all.count }} Likes
-            </div>
-
 
             </div>
         </div>
@@ -116,61 +83,3 @@
     </div>
 </div>
 {%endif%}
-
-
-<script type="text/javascript">
-
-
-    function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-              break;
-          }
-      }
-  }
-  return cookieValue;
-}
-
-
-
-    function handleAction(postId,userId,action){
-        const csrftoken = getCookie('csrftoken');
-        let url='{%url "blog:react"%}'
-        const method='POST'
-        const data=JSON.stringify({
-            postId:postId,
-            userId:userId,
-            action:action
-        })
-
-        const xhr=new XMLHttpRequest()
-        xhr.open(method,url)
-        xhr.setRequestHeader("Content-Type","application/json")
-        xhr.setRequestHeader("HTTP_X_REQUESTED_WITH","XMLHttpRequest")
-        xhr.setRequestHeader("X-Requested-With","XMLHttpRequest")
-        xhr.setRequestHeader("X-CSRFToken",csrftoken)
-        xhr.send(data)
-
-
-        let likeElement=document.getElementById(postId)
-        let likeCountElement=document.getElementById(`count-${postId}`)
-        let count=parseInt(likeCountElement.innerText.trim().split(" ")[0]);
-        if(action===1){
-            likeElement.innerHTML=`<i onclick="handleAction(${postId},${ userId },0)" class="fa fa-thumbs-down">Unlike</i>`
-            likeCountElement.innerText=`${count+1} Likes`;
-        }
-        else{
-            likeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},1)" class="fa fa-thumbs-up">Like</i>`
-            likeCountElement.innerText=`${Math.max(0,count-1)} Likes`;
-        }
-
-    }
-
-
-</script>
