@@ -151,8 +151,17 @@ def home_screen_view(request):
 @login_required
 def action_view(request):
     data = request.data
-    user = get_object_or_404(User, id=data.get('userId'))
-    post = get_object_or_404(BlogPost, id=data.get('postId'))
+
+    try:
+        user = get_object_or_404(User, id=data.get('userId'))
+    except Http404 as e:
+        return HttpResponseNotFound()
+
+    try:
+        post = get_object_or_404(BlogPost, id=data.get('postId'))
+    except Http404 as e:
+        return HttpResponseNotFound()
+
     action = data.get('action')
     obj, created = Likes.objects.get_or_create(user=user, post=post)
     # print(obj, created)
