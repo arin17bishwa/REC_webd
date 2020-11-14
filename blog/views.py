@@ -3,7 +3,7 @@ from django.http import HttpResponseForbidden, HttpResponseNotFound, Http404, Js
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.conf import settings
-from blog.models import BlogPost
+from blog.models import BlogPost, Likes
 from blog.forms import (CreateBlogPostForm,
                         UpdateBlogPostForm,
                         )
@@ -151,8 +151,43 @@ def action_view(request):
     user = get_object_or_404(User, id=data.get('userId'))
     post = get_object_or_404(BlogPost, id=data.get('postId'))
     action = data.get('action')
-    if action:
-        post.liked_by.add(user)
-    else:
-        post.liked_by.remove(user)
-    return JsonResponse(data={'message': 'success'}, status=200)
+    obj, created = Likes.objects.get_or_create(user=user, post=post)
+    # print(obj, created)
+    liked=True
+    disliked=False
+    if action:  # pressed like button
+        if not created:
+            if obj.liked:  # Unliking
+                obj.delete()
+                liked=False
+            else:
+                obj.liked = True  # means Liked now(previously disliked)
+                obj.save()
+                liked=True
+    else:  # pressed Dislike button
+        if created:
+            obj.liked = False
+            obj.save()
+            liked=False
+            disliked=True
+        else:
+            if obj.liked:
+                obj.liked = False
+                obj.save()
+                disliked=True
+                liked=False
+
+            else:
+                obj.delete()
+                # print('dislike removed')
+                liked=False
+
+    post.refresh_from_db()
+    context = {
+        'likes': post.like_count,
+        'dislikes': post.dislike_count,
+        'liked':liked,
+        'disliked':disliked,
+    }
+    print(context)
+    return JsonResponse(data=context, content_type='application/json')
