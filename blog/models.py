@@ -71,19 +71,19 @@ def modify_count_onsave(sender, instance, created, **kwargs):
     if created:
         if reaction:
             # obj.like_count += 1
-            qs.update(like_count=obj.like_count + 1)
+            qs.update(like_count=models.F('like_count') + 1)
         else:
             # obj.dislike_count += 1
-            qs.update(dislike_count=obj.dislike_count + 1)
+            qs.update(dislike_count=models.F('dislike_count') + 1)
     else:
         if reaction:
             # obj.like_count += 1
             # obj.dislike_count -= 1
-            qs.update(like_count=obj.like_count + 1, dislike_count=obj.dislike_count - 1)
+            qs.update(like_count=models.F('like_count') + 1, dislike_count=models.F('dislike_count') - 1)
         else:
             # obj.dislike_count += 1
             # obj.like_count -= 1
-            qs.update(dislike_count=obj.dislike_count + 1, like_count=obj.like_count - 1)
+            qs.update(dislike_count=models.F('dislike_count') + 1, like_count=models.F('like_count') - 1)
     # obj.save()
 
 
@@ -94,8 +94,8 @@ def modify_count_ondel(sender, instance, **kwargs):
     obj = qs.first()
     if reaction:
         # obj.like_count -= 1
-        qs.update(like_count=obj.like_count - 1)
+        qs.update(like_count=models.F('like_count') - 1)
     else:
         # obj.dislike_count -= 1
-        qs.update(dislike_count=obj.dislike_count - 1)
+        qs.update(dislike_count=models.F('dislike_count') - 1)
     # obj.save()
