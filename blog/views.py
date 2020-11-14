@@ -153,41 +153,41 @@ def action_view(request):
     action = data.get('action')
     obj, created = Likes.objects.get_or_create(user=user, post=post)
     # print(obj, created)
-    liked=True
-    disliked=False
+    liked = True
+    disliked = False
     if action:  # pressed like button
         if not created:
             if obj.liked:  # Unliking
                 obj.delete()
-                liked=False
+                liked = False
             else:
                 obj.liked = True  # means Liked now(previously disliked)
                 obj.save()
-                liked=True
+                liked = True
     else:  # pressed Dislike button
         if created:
             obj.liked = False
             obj.save()
-            liked=False
-            disliked=True
+            liked = False
+            disliked = True
         else:
             if obj.liked:
                 obj.liked = False
                 obj.save()
-                disliked=True
-                liked=False
+                disliked = True
+                liked = False
 
             else:
                 obj.delete()
                 # print('dislike removed')
-                liked=False
+                liked = False
 
     post.refresh_from_db()
     context = {
         'likes': post.like_count,
         'dislikes': post.dislike_count,
-        'liked':liked,
-        'disliked':disliked,
+        'liked': liked,
+        'disliked': disliked,
     }
     print(context)
     return JsonResponse(data=context, content_type='application/json')
