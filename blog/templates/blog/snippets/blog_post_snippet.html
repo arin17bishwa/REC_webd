@@ -65,6 +65,13 @@
                     <a href="{% url 'blog:detail' post.slug%}">(Read more)</a>
                 </p>
 
+                <div id="like-count-{{ blog_post.id }}" class="like-count" style="display:inline; float:left">
+                   {{ blog_post.like_count }} Likes
+                </div>
+                <div id="dislike-count-{{ blog_post.id }}" class="dislike-count" style="display:inline; float:right">
+                   {{ blog_post.dislike_count }} Dislikes
+                </div>
+
             </div>
         </div>
     </div>
