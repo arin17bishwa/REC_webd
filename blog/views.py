@@ -50,6 +50,9 @@ def detail_blog_view(request, slug):
     except Exception as e:
         return HttpResponseNotFound()
 
+    reacted = Likes.objects.filter(user=request.user.id, post=blog_post.id)
+    context['liked'] = reacted.filter(liked=True).exists()
+    context['disliked'] = reacted.filter(liked=False).exists()
     context['blog_post'] = blog_post
 
     return render(request, 'blog/detail_blog.html', context)
