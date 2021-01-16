@@ -50,6 +50,17 @@ class BlogPost(models.Model):
         return '/blog/{}/'.format(self.slug)
 
 
+class Comment(models.Model):
+    post=models.ForeignKey(BlogPost,on_delete=models.CASCADE)
+    user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    content=models.TextField(max_length=1000,blank=False,null=False)
+    parent=models.ForeignKey('self',on_delete=models.SET_NULL,null=True)
+    timestamp=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '{} by-{} at-{}'.format(self.content,self.user,self.timestamp)
+
+
 @receiver(post_delete, sender=BlogPost)
 def submission_delete(sender, instance, **kwargs):
     instance.image.delete(False)
