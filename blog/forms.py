@@ -1,7 +1,8 @@
 from django import forms
 
-from blog.models import (BlogPost,
-                         )
+from .models import (
+    BlogPost, Comment
+)
 
 
 class CreateBlogPostForm(forms.ModelForm):
@@ -35,3 +36,11 @@ class UpdateBlogPostForm(forms.ModelForm):
         if commit:
             blog_post.save()
         return blog_post
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = [
+            'content',
+        ]
