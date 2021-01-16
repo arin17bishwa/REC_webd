@@ -1,6 +1,6 @@
 {%extends 'base.html'%}
 {% load tz %}
-
+{% load static %}
 {% block title %}
 {{ blog_post.title }}
 {% endblock title%}
@@ -110,6 +110,51 @@
                     </div>
                 </div>
             </div>
+        <hr>
+
+
+        <form action="{% url 'blog:post_comment' %}" method="post">{% csrf_token %}
+            <div class="form-group">
+                <label for="content">Post comment...</label>
+                <input type="text" class="form-control" name="content" placeholder="Enter comment...">
+            </div>
+            <input type="hidden" name="postId" value="{{ blog_post.id }}">
+            <button type="submit" class="btn btn-primary">Post...</button>
+        </form>
+        <br>
+        <h3>Comments({{ comments|length }})</h3>
+        {% for comment in comments %}
+            <div class="row my-3">
+                <div class="col-md-1 bg-success">
+                    <img src="{%static 'tsubaki.png' %}" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+                </div>
+                <div class="col-md-11 bg-warning">
+                    <b>{{ comment.user.username }}</b> on {{ comment.timestamp|localtime }}
+                    <div>{{ comment.content }}</div>
+                    <div class="reply mx-0">
+                        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-{{ comment.id }}" aria-expanded="false" aria-controls="commentReply-{{ comment.id }}">
+                            Reply
+                        </button>
+                        <div class="collapse" id="commentReply-{{ comment.id }}">
+                            <div class="card card-body my-2">
+                                <form action="{% url 'blog:post_comment' %}" method="post">{% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="content">Post reply</label>
+                                        <input type="text" class="form-control" name="content" placeholder="Enter comment...">
+                                    </div>
+                                    <input type="hidden" name="postId" value="{{ blog_post.id }}">
+                                    <input type="hidden" name="parent" value="{{ comment.id }}">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        {% endfor %}
+
 
         </div>
         <!--Blog post-->
@@ -117,74 +162,74 @@
     </div>
 </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
 
-    function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-              break;
-          }
+function getCookie(name) {
+let cookieValue = null;
+if (document.cookie && document.cookie !== '') {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
       }
   }
-  return cookieValue;
+}
+return cookieValue;
 }
 
 
-    function handleAction(postId,userId,action){
-        const csrftoken = getCookie('csrftoken');
-        let url='{%url "blog:react"%}'
-        const method='POST'
-        const data=JSON.stringify({
-            postId:postId,
-            userId:userId,
-            action:action
-        })
+function handleAction(postId,userId,action){
+    const csrftoken = getCookie('csrftoken');
+    let url='{%url "blog:react"%}'
+    const method='POST'
+    const data=JSON.stringify({
+        postId:postId,
+        userId:userId,
+        action:action
+    })
 
-        const xhr=new XMLHttpRequest()
-        xhr.open(method,url)
-        xhr.setRequestHeader("Content-Type","application/json")
-        xhr.setRequestHeader("HTTP_X_REQUESTED_WITH","XMLHttpRequest")
-        xhr.setRequestHeader("X-Requested-With","XMLHttpRequest")
-        xhr.setRequestHeader("X-CSRFToken",csrftoken)
-        xhr.onload=function(){
-            const dataReturned=JSON.parse(xhr.response);
-            changeHTML(dataReturned,postId,userId);
+    const xhr=new XMLHttpRequest()
+    xhr.open(method,url)
+    xhr.setRequestHeader("Content-Type","application/json")
+    xhr.setRequestHeader("HTTP_X_REQUESTED_WITH","XMLHttpRequest")
+    xhr.setRequestHeader("X-Requested-With","XMLHttpRequest")
+    xhr.setRequestHeader("X-CSRFToken",csrftoken)
+    xhr.onload=function(){
+        const dataReturned=JSON.parse(xhr.response);
+        changeHTML(dataReturned,postId,userId);
+    }
+    xhr.send(data)
+
+}
+
+
+function changeHTML(dataReturned,postId,userId){
+    let likeElement=document.getElementById(`${postId}-like`)
+    let dislikeElement=document.getElementById(`${postId}-dislike`)
+    let likeCountElement=document.getElementById(`like-count-${postId}`)
+    let dislikeCountElement=document.getElementById(`dislike-count-${postId}`)
+
+    if(dataReturned.liked){
+        likeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},1)" class="fa fa-thumbs-up">Liked!</i>`
         }
-        xhr.send(data)
-
+    else{
+        likeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},1)" class="fa fa-thumbs-o-up">Like</i>`
     }
 
-
-    function changeHTML(dataReturned,postId,userId){
-        let likeElement=document.getElementById(`${postId}-like`)
-        let dislikeElement=document.getElementById(`${postId}-dislike`)
-        let likeCountElement=document.getElementById(`like-count-${postId}`)
-        let dislikeCountElement=document.getElementById(`dislike-count-${postId}`)
-
-        if(dataReturned.liked){
-            likeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},1)" class="fa fa-thumbs-up">Liked!</i>`
-            }
-        else{
-            likeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},1)" class="fa fa-thumbs-o-up">Like</i>`
-        }
-
-        if(dataReturned.disliked){
-            dislikeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},0)" class="fa fa-thumbs-down">Disliked!</i>`
-        }
-        else {
-            dislikeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},0)" class="fa fa-thumbs-o-down">Dislike</i>`
-        }
-
-        likeCountElement.innerHTML=`${dataReturned.likes} Likes`
-        dislikeCountElement.innerHTML=`${dataReturned.dislikes} Dislikes`
+    if(dataReturned.disliked){
+        dislikeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},0)" class="fa fa-thumbs-down">Disliked!</i>`
     }
+    else {
+        dislikeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},0)" class="fa fa-thumbs-o-down">Dislike</i>`
+    }
+
+    likeCountElement.innerHTML=`${dataReturned.likes} Likes`
+    dislikeCountElement.innerHTML=`${dataReturned.dislikes} Dislikes`
+}
 
 
 </script>
