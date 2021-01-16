@@ -1,0 +1,39 @@
+{% load static %}
+{% load tz %}
+{% load  extra_filters%}
+
+{% for reply in replies %}
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="{%static 'tsubaki.png' %}" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>{{ reply.user.username }}</b> on {{ reply.timestamp|localtime }}
+            <div>{{ reply.content }}</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-{{ reply.id }}" aria-expanded="false" aria-controls="commentReply-{{ reply.id }}">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-{{ reply.id }}">
+            <div class="card card-body my-2">
+                <form action="{% url 'blog:post_comment' %}" method="post">{% csrf_token %}
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="{{ blog_post.id }}">
+                    <input type="hidden" name="parent" value="{{ reply.id }}">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                {% include 'blog/snippets/replies_snippet.html' with replies=repd|get_reps:reply.id repd=repd%}
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+{% endfor %}
