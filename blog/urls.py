@@ -5,6 +5,7 @@ from blog.views import (
     edit_blog_view,
     delete_blog_view,
     action_view,
+    post_comment_view,
 )
 
 app_name = 'blog'
@@ -15,7 +16,55 @@ urlpatterns = [
     path('<slug>/edit', edit_blog_view, name='edit'),
     path('<slug>/delete', delete_blog_view, name='delete'),
     path('react', action_view, name='react'),
+    path('postComment',post_comment_view,name='post_comment')
 ]
+
+
+"""
+        {% for comment in comments %}
+            <div class="row my-3">
+                <div class="col-md-1 bg-success">
+                    <img src="{%static 'tsubaki.png' %}" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+                </div>
+                <div class="col-md-11 bg-warning">
+                    <b>{{ comment.user.username }}</b> on {{ comment.timestamp|localtime }}
+                    <div>{{ comment.content }}</div>
+                    <div class="reply mx-0">
+                        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-{{ comment.id }}" aria-expanded="false" aria-controls="commentReply-{{ comment.id }}">
+                            Reply
+                        </button>
+                        <div class="collapse" id="commentReply-{{ comment.id }}">
+                            <div class="card card-body my-2">
+                                <form action="{% url 'blog:post_comment' %}" method="post">{% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="content">Post reply</label>
+                                        <input type="text" class="form-control" name="content" placeholder="Enter comment...">
+                                    </div>
+                                    <input type="hidden" name="postId" value="{{ blog_post.id }}">
+                                    <input type="hidden" name="parent" value="{{ comment.id }}">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        {% endfor %}
+
+
+"""
+
+
+
+
+
+
+
+
+
+
 '''
 
 
