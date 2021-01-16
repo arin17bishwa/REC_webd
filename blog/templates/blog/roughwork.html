@@ -1,0 +1,1103 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        
+wkejqj
+
+    </title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+</head>
+
+<body>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<style type="text/css">
+    @media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+
+.fa-bars {
+  color: black;
+}
+
+
+
+
+
+
+
+    * {
+    box-sizing: border-box;
+}
+
+
+.navbar {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+
+.navbar-links {
+    height: 100%;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+.navbar-links li:hover {
+    background-color: #555;
+}
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
+
+.navbar .search-container {
+  float: left;
+}
+
+.navbar input[type=date] {
+  padding: 6px;
+  margin-top: 6px;
+  font-size: 17px;
+  border: none;
+}
+
+.navbar .search-container button {
+    float: right;
+    padding: 6px;
+    margin-top: 30px;
+    margin-left: 4px;
+    margin-right: 16px;
+    background: #ab1010;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar .search-container button:hover {
+  background: #194cb2;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar .search-container {
+    float: none;
+  }
+  .navbar a, .navbar input[type=date], .navbar .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .navbar input[type=date] {
+    border: 1px solid #ccc;
+  }
+}
+</style>
+
+
+<nav class="navbar fixed-top">
+    <div class="brand-title">
+        
+            Hello, Asd
+        
+    </div>
+    <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+    
+    <div class="search-container">
+    <form action="/" method="get">
+        <div style="float: left">
+            <label for="id_start" style="float:left">Start</label>
+            <input class="form-control" type="date" name="start" id="id_start" placeholder="Start Date" required
+            
+            />
+        </div>
+        <div style="float: left">
+            <label for="id_end" style="float:left">End</label>
+            <input  class="form-control" type="date" name="end" id="id_end" placeholder="End Date" required
+            
+            />
+        </div>
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+    </div>
+    
+        <ul>
+            
+                <li><a href="/">Home</a></li>
+                <li><a href="/account/logout/">Logout</a></li>
+                <li><a href="/blog/create/">Create Post</a></li>
+            
+
+        </ul>
+    </div>
+</nav>
+
+
+
+<script type="text/javascript">
+
+    const toggleButton = document.getElementsByClassName('toggle-button')[0]
+    const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+    toggleButton.addEventListener('click', () => {
+      navbarLinks.classList.toggle('active')
+    })
+
+</script>
+
+<style type="text/css">
+    body{
+        background-color: #e3e1e1;
+    }
+
+</style>
+
+
+    <!--Body-->
+    <style type="text/css">
+       .main{
+            min-height: 100vh;
+            margin-top:0;
+       }
+    </style>
+
+    <div class="main">
+        
+<style type="text/css">
+    .btn-del{
+        background-color: #a41515;
+        text-decoration-color: white;
+    }
+
+
+    .card{
+        max-width: 700px;
+        padding: 10px;
+    }
+
+    .container{
+        padding: 20px;
+        margin-top: 80px;
+    }
+
+
+
+
+    .fa-thumbs-up{
+    color:blue;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 1.5em;
+}
+
+.fa-thumbs-o-up{
+    color:blue;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 1.5em;
+}
+
+.fa-thumbs-down{
+    color:red;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 1.5em;
+}
+
+.fa-thumbs-o-down{
+    color:red;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 1.5em;
+}
+
+.like-count{
+    color: blue;
+    font-size: 1.5em
+}
+
+.dislike-count{
+    color: red;
+    font-size: 1.5em
+}
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+
+        <!--Blog post-->
+        <div class="card m-auto">
+            <img class="card-img-top" src="/media/blog/7/101045645326-Screenshot_from_2021-01-09_17-36-00.png" alt="Image is not available at this moment">
+
+            <div class="card-body my-2">
+                <h2 class="card-title">wkejqj</h2>
+                <div class="card-footer text-muted text-right">
+                    -By asd on Jan. 16, 2021, 3:40 p.m.
+                </div>
+                <p class="card-text">rhbqkcrceq</p>
+
+                
+                    <a href="/blog/asd-101045644234/edit" class="btn btn-primary">Edit</a>
+                    <a id="del" href="/blog/asd-101045644234/delete" class="btn btn-del">Delete</a>
+
+                
+            </div>
+        <hr>
+        <div id="15">
+                <div style="display:inline; float:left">
+                    <div id="15-like">
+                        
+                            <i onclick="handleAction(15,7,1)" class="fa fa-thumbs-o-up">Like</i>
+                        
+                    </div>
+                    <div id="like-count-15" class="like-count" >
+                       0 Likes
+                    </div>
+                </div>
+                <div style="display:inline; float:right">
+                    <div id="15-dislike">
+                        
+                            <i onclick="handleAction(15,7,0)" class="fa fa-thumbs-o-down">Dislike</i>
+                        
+                    </div>
+                    <div id="dislike-count-15" class="dislike-count" >
+                       0 Dislikes
+                    </div>
+                </div>
+            </div>
+        <hr>
+
+
+        <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+            <div class="form-group">
+                <label for="content">Post comment...</label>
+                <input type="text" class="form-control" name="content" placeholder="Enter comment...">
+            </div>
+            <input type="hidden" name="postId" value="15">
+            <button type="submit" class="btn btn-primary">Post...</button>
+        </form>
+        <br>
+        <h3>Comments(4)</h3>
+        
+
+
+
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 10:41 a.m.
+            <div>new comm</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-24" aria-expanded="false" aria-controls="commentReply-24">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-24">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="24">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 11:02 a.m.
+            <div>new comm rep 1</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-27" aria-expanded="false" aria-controls="commentReply-27">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-27">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="27">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 11:02 a.m.
+            <div>new comm rep 1</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-26" aria-expanded="false" aria-controls="commentReply-26">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-26">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="26">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 10:40 a.m.
+            <div>jhbhjb</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-23" aria-expanded="false" aria-controls="commentReply-23">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-23">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="23">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 11:03 a.m.
+            <div>rep2</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-29" aria-expanded="false" aria-controls="commentReply-29">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-29">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="29">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 11:05 a.m.
+            <div>rep 2.1</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-30" aria-expanded="false" aria-controls="commentReply-30">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-30">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="30">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 11:05 a.m.
+            <div>rep 2.1.2</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-32" aria-expanded="false" aria-controls="commentReply-32">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-32">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="32">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 11:05 a.m.
+            <div>rep 2.1.1</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-31" aria-expanded="false" aria-controls="commentReply-31">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-31">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="31">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 11:03 a.m.
+            <div>rep1</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-28" aria-expanded="false" aria-controls="commentReply-28">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-28">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="28">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 10:12 a.m.
+            <div>2</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-19" aria-expanded="false" aria-controls="commentReply-19">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-19">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="19">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 10:10 a.m.
+            <div>1</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-17" aria-expanded="false" aria-controls="commentReply-17">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-17">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="17">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 10:14 a.m.
+            <div>reply to 1.......1</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-20" aria-expanded="false" aria-controls="commentReply-20">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-20">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="20">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 10:42 a.m.
+            <div>new rep 1</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-25" aria-expanded="false" aria-controls="commentReply-25">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-25">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="25">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 10:40 a.m.
+            <div>jinijnj</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-22" aria-expanded="false" aria-controls="commentReply-22">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-22">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="22">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 10:11 a.m.
+            <div>reply to 1</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-18" aria-expanded="false" aria-controls="commentReply-18">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-18">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="18">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+    <div class="row my-2">
+        <!--Just an associated image of Tsubaki-->
+        <div class="col-md-1 bg-warning">
+            <img src="/static/tsubaki.png" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
+        </div>
+        <!--end image(might remove later)-->
+
+        <!--actual comment and its replies-->
+        <div class="col-md-11 bg-success">
+            <b>asd</b> on Jan. 16, 2021, 10:39 a.m.
+            <div>reply to 1.....2</div>
+            <div class="reply mx-0">
+        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-21" aria-expanded="false" aria-controls="commentReply-21">
+            Reply
+        </button>
+        <div class="collapse" id="commentReply-21">
+            <div class="card card-body my-2">
+                <form action="/blog/postComment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="NeMowadXwaTN7xM7wBgUqP4GJMBATQPJuBfErSj8xYzBe27slVyCYiywQ2prUMSu">
+                    <div class="form-group">
+                        <label for="content">Post reply</label>
+                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                    </div>
+                    <input type="hidden" name="postId" value="15">
+                    <input type="hidden" name="parent" value="21">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+
+
+
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+        </div>
+        <!--actual comment and its replies ends-->
+    </div>
+
+
+        </div>
+        <!--Blog post-->
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+function getCookie(name) {
+let cookieValue = null;
+if (document.cookie && document.cookie !== '') {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+      }
+  }
+}
+return cookieValue;
+}
+
+
+function handleAction(postId,userId,action){
+    const csrftoken = getCookie('csrftoken');
+    let url='/blog/react'
+    const method='POST'
+    const data=JSON.stringify({
+        postId:postId,
+        userId:userId,
+        action:action
+    })
+
+    const xhr=new XMLHttpRequest()
+    xhr.open(method,url)
+    xhr.setRequestHeader("Content-Type","application/json")
+    xhr.setRequestHeader("HTTP_X_REQUESTED_WITH","XMLHttpRequest")
+    xhr.setRequestHeader("X-Requested-With","XMLHttpRequest")
+    xhr.setRequestHeader("X-CSRFToken",csrftoken)
+    xhr.onload=function(){
+        const dataReturned=JSON.parse(xhr.response);
+        changeHTML(dataReturned,postId,userId);
+    }
+    xhr.send(data)
+
+}
+
+
+function changeHTML(dataReturned,postId,userId){
+    let likeElement=document.getElementById(`${postId}-like`)
+    let dislikeElement=document.getElementById(`${postId}-dislike`)
+    let likeCountElement=document.getElementById(`like-count-${postId}`)
+    let dislikeCountElement=document.getElementById(`dislike-count-${postId}`)
+
+    if(dataReturned.liked){
+        likeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},1)" class="fa fa-thumbs-up">Liked!</i>`
+        }
+    else{
+        likeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},1)" class="fa fa-thumbs-o-up">Like</i>`
+    }
+
+    if(dataReturned.disliked){
+        dislikeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},0)" class="fa fa-thumbs-down">Disliked!</i>`
+    }
+    else {
+        dislikeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},0)" class="fa fa-thumbs-o-down">Dislike</i>`
+    }
+
+    likeCountElement.innerHTML=`${dataReturned.likes} Likes`
+    dislikeCountElement.innerHTML=`${dataReturned.dislikes} Dislikes`
+}
+
+
+</script>
+
+
+    </div>
+
+
+        <!--End Body-->
+    <style type="text/css">
+    .footer{
+        min-height: 100px;
+    }
+</style>
+
+<!--Footer-->
+<div class="d-flex flex-row align-items-center footer bg-white border-top shadow-lg">
+    <p class="m-auto">
+        <a href="https://github.com/arin17bishwa/REC_webd">RECursion Auditions</a>
+    </p>
+
+</div>
+
+<!--End Footer-->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+
+
+</body>
+
+
+</html>
