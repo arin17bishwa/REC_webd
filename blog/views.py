@@ -3,15 +3,18 @@ from django.http import HttpResponseForbidden, HttpResponseNotFound, Http404, Js
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.conf import settings
-from blog.models import BlogPost, Likes
+from blog.models import BlogPost, Likes, Comment
 from blog.forms import (CreateBlogPostForm,
                         UpdateBlogPostForm,
+                        CommentForm
                         )
+from .templatetags import extra_filters
 from django.contrib.auth.models import User
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
 from rest_framework.decorators import api_view
 from django.utils.timezone import make_aware
 from datetime import datetime
+from collections import defaultdict
 
 BLOG_POSTS_PER_PAGE = settings.BLOG_POSTS_PER_PAGE
 LOGIN_URL = settings.LOGIN_URL
@@ -54,6 +57,15 @@ def detail_blog_view(request, slug):
     context['liked'] = reacted.filter(liked=True).exists()
     context['disliked'] = reacted.filter(liked=False).exists()
     context['blog_post'] = blog_post
+    all_comments = Comment.objects.filter(post=blog_post.id)
+    comments = all_comments.filter(parent=None).order_by('-timestamp')
+    replies = all_comments.exclude(parent=None).order_by('-timestamp')
+    rep_d = defaultdict(list)
+    for reply in replies:
+        rep_d[reply.parent.id].append(reply)
+    context['comments'] = comments
+    context['replies'] = rep_d
+    # print(rep_d)
 
     return render(request, 'blog/detail_blog.html', context)
 
@@ -203,3 +215,25 @@ def action_view(request):
     }
     print(context)
     return JsonResponse(data=context, content_type='application/json')
+
+
+@api_view(['POST', ])
+@login_required
+def post_comment_view(request):
+    form = CommentForm(request.POST or None)
+    # print(1111111,'\n',request.POST)
+    postId = request.POST.get('postId')
+    # print(postId)
+    post = BlogPost.objects.get(id=postId)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.user = request.user
+        obj.post = post
+        parent_id = request.POST.get('parent', '')
+        if parent_id != '':
+            parent_comm = Comment.objects.get(id=parent_id)
+            obj.parent = parent_comm
+
+        obj.save()
+
+    return redirect('blog:detail', slug=post.slug)
