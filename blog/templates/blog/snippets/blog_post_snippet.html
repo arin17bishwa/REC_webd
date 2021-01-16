@@ -66,7 +66,7 @@
         <div class="card m-auto">
             <img class="card-img-top" src="{{blog_post.image.url}}" alt="Image is not available at this moment">
             <div class="card-body mt-2 mb-2">
-                <h2 class="card-title">{{blog_post.title}}</h2>
+                <h2 class="card-title"><a class="text-dark" href="{% url 'blog:detail' post.slug%}">{{blog_post.title}}</a></h2>
                 <div class="card-footer text-muted text-right">
                   -By {{blog_post.author}} on{%timezone "Asia/Calcutta"%} {{blog_post.datetime_published}}{% endtimezone %}
                 </div>
