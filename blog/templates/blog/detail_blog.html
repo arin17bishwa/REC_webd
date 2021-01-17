@@ -97,18 +97,7 @@
                        {{ blog_post.like_count }} Likes
                     </div>
                 </div>
-                <div style="display:inline; float:right">
-                    <div id="{{ blog_post.id }}-dislike">
-                        {% if disliked %}
-                            <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},0)" class="fa fa-thumbs-down">Disliked!</i>
-                        {% else %}
-                            <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},0)" class="fa fa-thumbs-o-down">Dislike</i>
-                        {% endif %}
-                    </div>
-                    <div id="dislike-count-{{ blog_post.id }}" class="dislike-count" >
-                       {{ blog_post.dislike_count }} Dislikes
-                    </div>
-                </div>
+
             </div>
         <hr>
 

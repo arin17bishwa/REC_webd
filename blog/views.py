@@ -188,24 +188,25 @@ def action_view(request):
                 obj.liked = True  # means Liked now(previously disliked)
                 obj.save()
                 liked = True
-    else:  # pressed Dislike button
-        if created:
-            obj.liked = False
-            obj.save()
-            liked = False
-            disliked = True
-        else:
-            if obj.liked:
-                obj.liked = False
-                obj.save()
-                disliked = True
-                liked = False
-
-            else:
-                obj.delete()
-                # print('dislike removed')
-                liked = False
-
+    # region Press Dislike button
+    # else:  # pressed Dislike button
+    #     if created:
+    #         obj.liked = False
+    #         obj.save()
+    #         liked = False
+    #         disliked = True
+    #     else:
+    #         if obj.liked:
+    #             obj.liked = False
+    #             obj.save()
+    #             disliked = True
+    #             liked = False
+    #
+    #         else:
+    #             obj.delete()
+    #             # print('dislike removed')
+    #             liked = False
+    # endregion
     post.refresh_from_db()
     context = {
         'likes': post.like_count,
