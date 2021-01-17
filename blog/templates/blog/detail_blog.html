@@ -123,7 +123,9 @@
         </form>
         <br>
         <h3>Comments({{ comments|length }})</h3>
-        {% include 'blog/snippets/replies_snippet.html' with replies=comments repd=replies%}
+        <div class="mx-2">
+            {% include 'blog/snippets/replies_snippet.html' with replies=comments repd=replies%}
+        </div>
 
         </div>
         <!--Blog post-->
