@@ -5,13 +5,13 @@
 {% for reply in replies %}
     <div class="row my-2">
         <!--Just an associated image-->
-        <div class="col-md-1 bg-warning">
+        <div class="col-md-1">
             <img src="{%static 'tsubaki.png' %}" alt="An image" class="rounded  mx-auto d-block p-2" height="60" width="60">
         </div>
         <!--end image(might remove later)-->
 
         <!--actual comment and its replies-->
-        <div class="col-md-11 bg-success">
+        <div class="col-md-11">
             <b>{{ reply.user.username }}</b> on {{ reply.timestamp|localtime }}
             <div>{{ reply.content }}</div>
             <div class="reply mx-0">
