@@ -15,7 +15,7 @@ from rest_framework.decorators import api_view
 from django.utils.timezone import make_aware
 from datetime import datetime
 from collections import defaultdict
-
+from urllib.parse import quote_plus
 BLOG_POSTS_PER_PAGE = settings.BLOG_POSTS_PER_PAGE
 LOGIN_URL = settings.LOGIN_URL
 
@@ -57,6 +57,7 @@ def detail_blog_view(request, slug):
     context['liked'] = reacted.filter(liked=True).exists()
     context['disliked'] = reacted.filter(liked=False).exists()
     context['blog_post'] = blog_post
+    context['share_quote']=quote_plus(blog_post.title)
     all_comments = Comment.objects.filter(post=blog_post.id)
     comments = all_comments.filter(parent=None).order_by('-timestamp')
     replies = all_comments.exclude(parent=None).order_by('-timestamp')
