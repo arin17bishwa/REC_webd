@@ -26,7 +26,7 @@
 
 
 
-    .fa-thumbs-up{
+.fa-thumbs-up{
     color:blue;
     text-shadow: 1px 1px 1px #ccc;
     font-size: 1.5em;
@@ -85,20 +85,20 @@
             </div>
         <hr>
         <div id="{{ blog_post.id }}">
-                <div style="display:inline; float:left">
-                    <div id="{{ blog_post.id }}-like">
-                        {% if liked %}
-                            <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},1)" class="fa fa-thumbs-up">Liked!</i>
-                        {% else %}
-                            <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},1)" class="fa fa-thumbs-o-up">Like</i>
-                        {% endif %}
-                    </div>
-                    <div id="like-count-{{ blog_post.id }}" class="like-count" >
-                       {{ blog_post.like_count }} Likes
-                    </div>
+            <div style="display:inline; float:left">
+                <div id="{{ blog_post.id }}-like">
+                    {% if liked %}
+                        <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},1)" class="fa fa-thumbs-up">Liked!</i>
+                    {% else %}
+                        <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},1)" class="fa fa-thumbs-o-up">Like</i>
+                    {% endif %}
                 </div>
-
+                <div id="like-count-{{ blog_post.id }}" class="like-count" >
+                   {{ blog_post.like_count }} Likes
+                </div>
             </div>
+
+        </div>
         <hr>
 
 
