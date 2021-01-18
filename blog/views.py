@@ -15,7 +15,7 @@ from rest_framework.decorators import api_view
 from django.utils.timezone import make_aware
 from datetime import datetime
 from collections import defaultdict
-
+from urllib.parse import quote_plus
 BLOG_POSTS_PER_PAGE = settings.BLOG_POSTS_PER_PAGE
 LOGIN_URL = settings.LOGIN_URL
 
@@ -57,6 +57,7 @@ def detail_blog_view(request, slug):
     context['liked'] = reacted.filter(liked=True).exists()
     context['disliked'] = reacted.filter(liked=False).exists()
     context['blog_post'] = blog_post
+    context['share_quote']=quote_plus(blog_post.title)
     all_comments = Comment.objects.filter(post=blog_post.id)
     comments = all_comments.filter(parent=None).order_by('-timestamp')
     replies = all_comments.exclude(parent=None).order_by('-timestamp')
@@ -188,24 +189,41 @@ def action_view(request):
                 obj.liked = True  # means Liked now(previously disliked)
                 obj.save()
                 liked = True
-    else:  # pressed Dislike button
-        if created:
-            obj.liked = False
-            obj.save()
-            liked = False
-            disliked = True
-        else:
-            if obj.liked:
-                obj.liked = False
-                obj.save()
-                disliked = True
-                liked = False
-
-            else:
-                obj.delete()
-                # print('dislike removed')
-                liked = False
-
+    # region Press Dislike button
+    # else:  # pressed Dislike button
+    #     if created:
+    #         obj.liked = False
+    #         obj.save()
+    #         liked = False
+    #         disliked = True
+    #     else:
+    #         if obj.liked:
+    #             obj.liked = False
+    #             obj.save()
+    #             disliked = True
+    #             liked = False
+    #
+    #         else:
+    #             obj.delete()
+    #             # print('dislike removed')
+    #             liked = False
+    # endregion
+    # region Dislike button HTML portion
+    # {  # <div style="display:inline; float:right">#}
+    #     {  # <div id="{{ blog_post.id }}-dislike">#}
+    #         {  # {% if disliked %}#}
+    #             {
+    #                 # <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},0)" class="fa fa-thumbs-down">Disliked!</i>#}
+    #                 {  # {% else %}#}
+    #                     {
+    #                         # <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},0)" class="fa fa-thumbs-o-down">Dislike</i>#}
+    #                         {  # {% endif %}#}
+    #                             {  # </div>#}
+    #                                 {  # <div id="dislike-count-{{ blog_post.id }}" class="dislike-count" >#}
+    #                                     {  # {{ blog_post.dislike_count }} Dislikes#}
+    #                                         {  # </div>#}
+    #                                             {  # </div>#}
+    # endregion
     post.refresh_from_db()
     context = {
         'likes': post.like_count,

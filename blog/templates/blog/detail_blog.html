@@ -26,7 +26,7 @@
 
 
 
-    .fa-thumbs-up{
+.fa-thumbs-up{
     color:blue;
     text-shadow: 1px 1px 1px #ccc;
     font-size: 1.5em;
@@ -59,6 +59,31 @@
     color: red;
     font-size: 1.5em
 }
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+    padding: 12px;
+    border-radius: 50%;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+    padding: 12px;
+    border-radius: 50%;
+
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+    padding: 12px;
+    border-radius: 50%;
+}
 
 </style>
 
@@ -85,31 +110,25 @@
             </div>
         <hr>
         <div id="{{ blog_post.id }}">
-                <div style="display:inline; float:left">
-                    <div id="{{ blog_post.id }}-like">
-                        {% if liked %}
-                            <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},1)" class="fa fa-thumbs-up">Liked!</i>
-                        {% else %}
-                            <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},1)" class="fa fa-thumbs-o-up">Like</i>
-                        {% endif %}
-                    </div>
-                    <div id="like-count-{{ blog_post.id }}" class="like-count" >
-                       {{ blog_post.like_count }} Likes
-                    </div>
+            <div style="display:inline; float:left">
+                <div id="{{ blog_post.id }}-like">
+                    {% if liked %}
+                        <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},1)" class="fa fa-thumbs-up">Liked!</i>
+                    {% else %}
+                        <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},1)" class="fa fa-thumbs-o-up">Like</i>
+                    {% endif %}
                 </div>
-                <div style="display:inline; float:right">
-                    <div id="{{ blog_post.id }}-dislike">
-                        {% if disliked %}
-                            <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},0)" class="fa fa-thumbs-down">Disliked!</i>
-                        {% else %}
-                            <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},0)" class="fa fa-thumbs-o-down">Dislike</i>
-                        {% endif %}
-                    </div>
-                    <div id="dislike-count-{{ blog_post.id }}" class="dislike-count" >
-                       {{ blog_post.dislike_count }} Dislikes
-                    </div>
+                <div id="like-count-{{ blog_post.id }}" class="like-count" >
+                   {{ blog_post.like_count }} Likes
                 </div>
             </div>
+        <!--Social Share links-->
+            <div style="display:inline; float:right" class="">
+                <a class="fa fa-facebook " target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"></a>
+                <a class="fa fa-linkedin " target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ share_quote }}&source={{ request.build_absolute_uri }}"></a>
+                <a class="fa fa-instagram" target="_blank" href="#"></a>
+            </div>
+        </div>
         <hr>
 
 
@@ -123,7 +142,9 @@
         </form>
         <br>
         <h3>Comments({{ comments|length }})</h3>
-        {% include 'blog/snippets/replies_snippet.html' with replies=comments repd=replies%}
+        <div class="mx-2">
+            {% include 'blog/snippets/replies_snippet.html' with replies=comments repd=replies%}
+        </div>
 
         </div>
         <!--Blog post-->
