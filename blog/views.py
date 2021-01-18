@@ -207,6 +207,22 @@ def action_view(request):
     #             # print('dislike removed')
     #             liked = False
     # endregion
+    # region Dislike button HTML portion
+    # {  # <div style="display:inline; float:right">#}
+    #     {  # <div id="{{ blog_post.id }}-dislike">#}
+    #         {  # {% if disliked %}#}
+    #             {
+    #                 # <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},0)" class="fa fa-thumbs-down">Disliked!</i>#}
+    #                 {  # {% else %}#}
+    #                     {
+    #                         # <i onclick="handleAction({{ blog_post.id }},{{ request.user.id }},0)" class="fa fa-thumbs-o-down">Dislike</i>#}
+    #                         {  # {% endif %}#}
+    #                             {  # </div>#}
+    #                                 {  # <div id="dislike-count-{{ blog_post.id }}" class="dislike-count" >#}
+    #                                     {  # {{ blog_post.dislike_count }} Dislikes#}
+    #                                         {  # </div>#}
+    #                                             {  # </div>#}
+    # endregion
     post.refresh_from_db()
     context = {
         'likes': post.like_count,
