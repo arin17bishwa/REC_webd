@@ -199,26 +199,14 @@ function handleAction(postId,userId,action){
 
 function changeHTML(dataReturned,postId,userId){
     let likeElement=document.getElementById(`${postId}-like`)
-    let dislikeElement=document.getElementById(`${postId}-dislike`)
     let likeCountElement=document.getElementById(`like-count-${postId}`)
-    let dislikeCountElement=document.getElementById(`dislike-count-${postId}`)
-
     if(dataReturned.liked){
         likeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},1)" class="fa fa-thumbs-up">Liked!</i>`
         }
     else{
         likeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},1)" class="fa fa-thumbs-o-up">Like</i>`
     }
-
-    if(dataReturned.disliked){
-        dislikeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},0)" class="fa fa-thumbs-down">Disliked!</i>`
-    }
-    else {
-        dislikeElement.innerHTML=`<i onclick="handleAction(${postId},${userId},0)" class="fa fa-thumbs-o-down">Dislike</i>`
-    }
-
     likeCountElement.innerHTML=`${dataReturned.likes} Likes`
-    dislikeCountElement.innerHTML=`${dataReturned.dislikes} Dislikes`
 }
 
 
