@@ -125,7 +125,7 @@
         <!--Social Share links-->
             <div style="display:inline; float:right" class="">
                 <a class="fa fa-facebook " target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"></a>
-                <a class="fa fa-linkedin " target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ share_quote }}&source={{ request.build_absolute_uri }}"></a>
+                <a class="fa fa-linkedin " target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri|urlencode }}"></a>
                 <a class="fa fa-instagram" target="_blank" href="#"></a>
             </div>
         </div>
