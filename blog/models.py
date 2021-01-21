@@ -56,9 +56,19 @@ class Comment(models.Model):
     content=models.TextField(max_length=1000,blank=False,null=False)
     parent=models.ForeignKey('self',on_delete=models.SET_NULL,null=True)
     timestamp=models.DateTimeField(auto_now_add=True)
+    depth=models.SmallIntegerField(default=0,blank=False)
 
     def __str__(self):
         return '{} by-{} at-{}'.format(self.content,self.user,self.timestamp)
+
+
+@receiver(pre_save,sender=Comment)
+def set_depth(sender,instance,*args,**kwargs):
+    parent=instance.parent
+    if parent is None:
+        instance.depth=0
+    else:
+        instance.depth=parent.depth+1
 
 
 @receiver(post_delete, sender=BlogPost)
