@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseForbidden, HttpResponseNotFound, Http404, JsonResponse
+from django.http import HttpResponseForbidden, HttpResponseNotFound, Http404, JsonResponse,HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.conf import settings
@@ -250,6 +250,8 @@ def post_comment_view(request):
         parent_id = request.POST.get('parent', '')
         if parent_id != '':
             parent_comm = Comment.objects.get(id=parent_id)
+            if parent_comm.depth>=3:
+                return HttpResponseBadRequest(content='Max Thread limit exceeded')
             obj.parent = parent_comm
 
         obj.save()
