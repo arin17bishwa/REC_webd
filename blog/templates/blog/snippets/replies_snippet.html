@@ -15,24 +15,24 @@
             <b>{{ reply.user.username }}</b> {{ reply.timestamp|timesince }} ago
             <div>{{ reply.content }}</div>
             <div class="reply mx-0">
-        <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-{{ reply.id }}" aria-expanded="false" aria-controls="commentReply-{{ reply.id }}">
-            Reply
-        </button>
-        <div class="collapse" id="commentReply-{{ reply.id }}">
-            <div class="card card-body my-2">
-                <form action="{% url 'blog:post_comment' %}" method="post">{% csrf_token %}
-                    <div class="form-group">
-                        <label for="content">Post reply</label>
-                        <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#commentReply-{{ reply.id }}" aria-expanded="false" aria-controls="commentReply-{{ reply.id }}">
+                    Reply
+                </button>
+                <div class="collapse" id="commentReply-{{ reply.id }}">
+                    <div class="card card-body my-2">
+                        <form action="{% url 'blog:post_comment' %}" method="post">{% csrf_token %}
+                            <div class="form-group">
+                                <label for="content">Post reply</label>
+                                <input type="text" class="form-control" name="content" placeholder="Enter reply...">
+                            </div>
+                            <input type="hidden" name="postId" value="{{ blog_post.id }}">
+                            <input type="hidden" name="parent" value="{{ reply.id }}">
+                            <button type="submit" class="btn btn-primary">Post reply</button>
+                        </form>
                     </div>
-                    <input type="hidden" name="postId" value="{{ blog_post.id }}">
-                    <input type="hidden" name="parent" value="{{ reply.id }}">
-                    <button type="submit" class="btn btn-primary">Post reply</button>
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
-                {% include 'blog/snippets/replies_snippet.html' with replies=repd|get_reps:reply.id repd=repd%}
+            {% include 'blog/snippets/replies_snippet.html' with replies=repd|get_reps:reply.id repd=repd%}
         </div>
         <!--actual comment and its replies ends-->
     </div>
